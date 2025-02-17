@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useMovieStore } from "../store/movies";
+import { storeToRefs } from "pinia";
 import MovieCard from "../components/MovieCard.vue";
+import CategoryFilter from "../components/CategoryFilter.vue";
+import TrendingMovies from "../components/TrendingMovies.vue";
 
 const movieStore = useMovieStore();
-
-onMounted(() => {
-  movieStore.fetchTrendingMovies();
-});
+const { filteredMovies } = storeToRefs(movieStore);
 </script>
 
 <template>
-  <a-row :gutter="[16, 16]" justify="center">
+  <TrendingMovies />
+  <CategoryFilter style="margin-bottom: 1rem" />
+  <a-row
+    :gutter="[16, 16]"
+    justify="center"
+  >
     <a-col
-      v-for="movie in movieStore.trendingMovies"
+      v-for="movie in filteredMovies"
       :key="movie.id"
       :xs="24"
       :sm="12"

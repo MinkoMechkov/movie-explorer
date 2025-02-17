@@ -6,6 +6,7 @@ export interface Movie {
   release_date: string;
   overview: string;
   vote_average: number;
+  genre_ids: number[];
 }
 
 export interface MovieDetails extends Movie {

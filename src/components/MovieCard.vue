@@ -16,7 +16,10 @@ const goToDetails = () => {
 </script>
 
 <template>
-  <Card hoverable class="movie-card">
+  <Card
+    hoverable
+    class="movie-card"
+  >
     <template #cover>
       <img
         :src="
@@ -31,10 +34,20 @@ const goToDetails = () => {
 
     <template #actions>
       <span @click="movieStore.toggleFavourite(movie)">
-        <HeartFilled v-if="movieStore.isFavourite(movie.id)" class="fav-icon" />
-        <HeartOutlined v-else class="fav-icon" />
+        <HeartFilled
+          v-if="movieStore.isFavourite(movie.id)"
+          class="fav-icon"
+        />
+        <HeartOutlined
+          v-else
+          class="fav-icon"
+        />
       </span>
-      <Button type="primary" @click="goToDetails">Details</Button>
+      <Button
+        type="primary"
+        @click="goToDetails"
+        >Details</Button
+      >
     </template>
 
     <Card.Meta :title="movie.title" />
